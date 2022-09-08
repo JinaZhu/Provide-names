@@ -1,0 +1,61 @@
+.team-creation {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2%;
+  width: 50%;
+}
+
+.players {
+  padding: 2%;
+}
+
+.players-header {
+  display: flex;
+  justify-content: center;
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.players-header button {
+  align-self: center;
+  height: fit-content;
+  margin: 5px;
+}
+
+.team-list {
+  display: flex;
+  justify-content: center;
+}
+
+.team {
+  margin: 3vw;
+  list-style: decimal;
+}
+
+.blue-team {
+  color: blue;
+}
+
+.red-team {
+  color: red;
+}
+
+.start-button {
+  background-color: green;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 5px;
+  width: fit-content;
+}
+
+.board-link {
+  color: white;
+  text-decoration: none;
+}
