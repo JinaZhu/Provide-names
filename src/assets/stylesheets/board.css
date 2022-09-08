@@ -1,0 +1,62 @@
+.team-cards {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  width: 55vw;
+  height: 15vh;
+}
+
+.red-card {
+  background-color: #fe8a7a;
+}
+
+.blue-card {
+  background-color: #89a8ff;
+}
+
+.board-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: 10px;
+  width: 55vw;
+  height: 70vh;
+}
+
+.board-item {
+  font-size: 18px;
+  margin: 10px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+  border: 1px solid #d2d5d5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red-word {
+  background-color: #fe8a7a;
+  color: #611019;
+}
+
+.blue-word {
+  background-color: #89a8ff;
+  color: #182c67;
+}
+
+.assassin-word {
+  background-color: #202222;
+  color: #d2d5d5;
+}
+
+.role-button {
+  padding: 7px;
+  border: 1px solid #d2d5d5;
+  background: #d2d5d5;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.current-role {
+  background: #202222;
+  color: #d2d5d5;
+  border: 1px solid #202222;
+}
