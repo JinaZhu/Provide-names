@@ -60,3 +60,15 @@
   color: #d2d5d5;
   border: 1px solid #202222;
 }
+
+.board-item li {
+  list-style: decimal;
+}
+
+.teams-link {
+  background-color: #609b90;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-decoration: none;
+}
