@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../../assets/stylesheets/board.css";
 import AgentBoard from "./agentBoard";
 import ManagementBoard from "./managementBoard";
@@ -72,13 +73,36 @@ const Board = () => {
     setView(view);
   }
 
+  const redTeamPlayers = localStorage.getItem("redTeam") ? JSON.parse(localStorage.getItem("redTeam")).map((player, i) => {
+    return (
+      <li key={`${player}-${i}`}><span>{player}</span></li>
+    )
+  }) : ''
+
+  const blueTeamPlayers = localStorage.getItem("blueTeam") ? JSON.parse(localStorage.getItem("blueTeam")).map((player, i) => {
+    return (
+      <li key={`${player}-${i}`}><span>{player}</span></li>
+    )
+  }) : ''
+
   return (
     <div>
+      <Link to='/' className="teams-link">Back to Teams Creation</Link>
       <div>
         <div class="team-cards">
-          <div class="board-item red-card">Red Team</div>
+          <div class="board-item red-card">
+            <div>
+              Red Team
+              {redTeamPlayers}
+            </div>
+          </div>
           <div class="board-item">Cards Remaining</div>
-          <div class="board-item blue-card">Blue Team</div>
+          <div class="board-item blue-card">
+          <div>
+              Blue Team
+              {blueTeamPlayers}
+            </div>
+          </div>
         </div>
       </div>
       <button

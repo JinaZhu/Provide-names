@@ -1,10 +1,21 @@
-.team-creation {
+.players-creation {
+  background-color: white;
   border: 1px solid black;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 2%;
   width: 50%;
+}
+
+.players-input {
+  margin-bottom: 20px;
+}
+
+.sections {
+  display: flex;
+  justify-content: space-between;
 }
 
 .players {
@@ -19,7 +30,7 @@
 .players-list {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  list-style: decimal;
 }
 
 .players-header button {
@@ -28,34 +39,63 @@
   margin: 5px;
 }
 
+.teams-left {
+  padding: 2%;
+  width: 40%;
+}
+
+.teams-right {
+  border-left: 1px solid black;
+  padding: 2%;
+  width: 60%;
+}
+
 .team-list {
   display: flex;
   justify-content: center;
 }
 
 .team {
-  margin: 3vw;
+  margin-left: 3vw;
   list-style: decimal;
 }
 
 .blue-team {
-  color: blue;
+  color: #89a8ff;
 }
 
 .red-team {
-  color: red;
-}
-
-.start-button {
-  background-color: green;
-  border: 1px solid black;
-  border-radius: 5px;
-  font-weight: bold;
-  padding: 5px;
-  width: fit-content;
+  color: #fe8a7a;
 }
 
 .board-link {
+  background-color: #609b90;
+  border: none;
   color: white;
+  font-size: large;
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 10px;
   text-decoration: none;
+}
+
+.teams-page-button {
+  background-color: #6d89fc;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 25px;
+  margin-right: 5px;
 }

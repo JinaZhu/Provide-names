@@ -6,11 +6,11 @@ class Teams extends React.Component {
   constructor() {
     super();
     this.state = {
-      players: JSON.parse(sessionStorage.getItem('players')) || [],
-      blueTeam: JSON.parse(sessionStorage.getItem('blueTeam')) || [],
-      redTeam: JSON.parse(sessionStorage.getItem('redTeam')) || [],
+      players: JSON.parse(localStorage.getItem('players')) || [],
+      blueTeam: JSON.parse(localStorage.getItem('blueTeam')) || [],
+      redTeam: JSON.parse(localStorage.getItem('redTeam')) || [],
       name: '',
-      teamsOrganized: JSON.parse(sessionStorage.getItem('teamsOrganized')) || false,
+      teamsOrganized: JSON.parse(localStorage.getItem('teamsOrganized')) || false,
     };
 
     this.handleAddPlayer = this.handleAddPlayer.bind(this);
@@ -26,7 +26,7 @@ class Teams extends React.Component {
     const { players, name } = this.state
 
     players.push(name);
-    sessionStorage.setItem('players', JSON.stringify(players));
+    localStorage.setItem('players', JSON.stringify(players));
     this.setState({ name: '' })
   };
 
@@ -60,15 +60,15 @@ class Teams extends React.Component {
     });
 
     this.setState({ redTeam: redTeam, blueTeam: blueTeam });
-    sessionStorage.setItem('blueTeam', JSON.stringify(blueTeam));
-    sessionStorage.setItem('redTeam', JSON.stringify(redTeam));
+    localStorage.setItem('blueTeam', JSON.stringify(blueTeam));
+    localStorage.setItem('redTeam', JSON.stringify(redTeam));
   };
 
   handleReorganizeTeams(e) {
     e.preventDefault();
 
-    sessionStorage.removeItem('blueTeam');
-    sessionStorage.removeItem('redTeam');
+    localStorage.removeItem('blueTeam');
+    localStorage.removeItem('redTeam');
     this.handleOrganizeTeams(e);
   }
 
@@ -82,12 +82,12 @@ class Teams extends React.Component {
 
   handleTeamsOrganized() {
     this.setState({ teamsOrganized: true })
-    sessionStorage.setItem('teamsOrganized', JSON.stringify(true));
+    localStorage.setItem('teamsOrganized', JSON.stringify(true));
   }
 
   handleClearPlayers() {
     this.setState({ players: [], redTeam: [], blueTeam: [], name: '', teamsOrganized: false });
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
   render() {
@@ -116,47 +116,54 @@ class Teams extends React.Component {
 
     return (
       <>
-        <h1>Welcome To ProvideNames!</h1>
-        <div className="team-creation">
-          <h2>Create Your Teams Below</h2>
-          <h3>Enter all players</h3>
-          <form onSubmit={this.handleAddPlayer}>
-            <input
-              type='text'
-              value={name}
-              onChange={this.update('name')}/>
-            <button>Add</button>
-          </form>
-
-          <div className="players">
-            <div className="players-header">
-              <h4>Players</h4>
-              <button onClick={this.handleClearPlayers}>Clear Players</button>
+        <div className="players-creation">
+          <h2>Create Teams Below</h2>
+          <div className="players-input">
+            <h3>Enter players</h3>
+            <form onSubmit={this.handleAddPlayer}>
+              <input
+                type='text'
+                value={name}
+                onChange={this.update('name')}/>
+              <button className="teams-page-button">Add</button>
+            </form>
+          </div>
+          
+          <section className="sections">
+            <div className="teams-left">
+              <div className="players">
+                <div className="players-header">
+                  <h3>Players</h3>
+                  <button onClick={this.handleClearPlayers} className="teams-page-button">Clear Players</button>
+                </div>
+                <div className="players-list">
+                  {playersList}
+                </div>
+              </div>
             </div>
-            <div className="players-list">
-              {playersList}
+            
+            <div className="teams-right">
+              <div className="players-header">
+                <h3>Done Adding Players?</h3>
+                <button onClick={event} className="teams-page-button">
+                  {buttonText}
+                </button>
+              </div>
+              <div className="team-list">
+                <div className="team">
+                  <h3 className="red-team">Red Team</h3>
+                  {redTeamList}
+                </div>
+                <div className="team">
+                  <h3 className="blue-team">Blue Team</h3>
+                  {blueTeamList}
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
         </div>
 
-        <h3>Done Adding Players?</h3>
-        <button onClick={event}>{buttonText}</button>
-        <div className="team-list">
-          <div className="team">
-            <h5 className="blue-team">Blue Team</h5>
-            {blueTeamList}
-          </div>
-          <div className="team">
-            <h5 className="red-team">Red Team</h5>
-            {redTeamList}
-          </div>
-        </div>
-
-        <br />
-
-        <div className="start-button">
-          <Link to='/board' className="board-link">Start Game!</Link>
-        </div>
+        <Link to='/board' className="board-link">Start Game!</Link>
       </>
     );
   };
